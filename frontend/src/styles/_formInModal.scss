@@ -1,0 +1,114 @@
+@import "./basic";
+
+%basicColor {
+  background-color: #F2F2F2;
+  color: var(--primary-text-color);
+}
+
+.formInModal {
+  @extend %basic;
+
+  &__itemWrapper {
+    text-align: left;
+    margin: 0 5px 20px 5px;
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px 10px !important;
+      border-radius: 8px !important;
+    }
+  }
+
+  &__itemSelect {
+    input {
+      padding: 0 !important;
+    }
+  }
+
+  &__noResults {
+    padding: 10px !important;
+  }
+
+  &__firstItemWrapper {
+    margin-top: 20px;
+  }
+
+  &__lastItemWrapper {
+    margin-bottom: 35px;
+  }
+
+  &__drugAndDropWrapper {
+    @extend %flex;
+    @extend %justifySpaceBetween;
+    align-items: stretch;
+  }
+
+  &__drugAndDropWrapper2 {
+    @extend %flex;
+    justify-content: center;
+  }
+
+  &_dgMedium {
+    width: 71%;
+  }
+
+  &_dgLarge {
+    width: 77%;
+  }
+
+  &__statusWrapper {
+    width: 30%;
+    margin: 3rem 0 20px;
+  }
+
+  &__coloredItems {
+    @extend %basic;
+    @extend %flex;
+    @extend %alignCenter;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px !important;
+  }
+
+  &__all {
+    @extend %basicColor;
+    font-weight: 600;
+  }
+
+  &__color {
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--disabled-grey-color);
+    }
+  }
+
+  &_inactive {
+    @extend %basicColor;
+  }
+
+  &_active {
+    background-color: var(--primary-accent-color);
+    color: var(--white-color);
+  }
+
+  .ant-form-item-label > label {
+    @extend %basic;
+  }
+
+  .ant-form-item-explain-error {
+    @extend %basic;
+    font-size: 12px !important;
+    margin: 5px 0 10px;
+    color: var(--red-color) !important;
+  }
+}
+
+

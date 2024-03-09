@@ -1,0 +1,33 @@
+@import "./basic";
+
+.custom-select .ant-select-selector {
+  @extend %basic;
+  border-color: var(--disabled-grey-color) !important;
+}
+
+.custom-error-select .ant-select-selector {
+  @extend %basic;
+  border-color: var(--red-color) !important;
+}
+
+/* For active (hover) option */
+.ant-select-item.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: rgba(255, 102, 0, 0.3)  !important;
+  color: var(--primary-text-color) !important;
+}
+
+.ant-select-item.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: rgba(255, 102, 0, 0.3)  !important;
+  color: var(--primary-text-color) !important;
+}
+
+/* Hover state for Select Component */
+.custom-select:hover .ant-select-selector {
+  background-color: transparent !important;
+}
+
+/* Focused Select Component */
+.custom-select.ant-select-focused:not(.ant-select-disabled):not(.ant-select-customize-input) .ant-select-selector {
+  border-color: var(--disabled-grey-color) !important;
+  box-shadow: 0 0 0 1px rgba(180, 180, 180, 0.5) !important;
+}

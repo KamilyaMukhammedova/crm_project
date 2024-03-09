@@ -1,0 +1,56 @@
+@import "../../../styles/basic";
+
+.modalWindow {
+  @extend %basic;
+  text-align: center;
+  padding: 20px !important;
+
+  &__wrapper {
+    max-height: 80vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+  }
+
+  &__text {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #C9C9C9;
+  }
+
+  &__cancelBtn {
+    @extend %btn;
+    color: var(--primary-accent-color);
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  &__cancelBtnOutlined {
+    @extend %btn;
+    color: var(--disabled-grey-color);
+    width: 100%;
+    box-shadow: var(--box-shadow-light-grey);
+
+    &:hover {
+      border-color: var(--primary-accent-color) !important;
+      color: var(--primary-accent-color) !important;
+      transform: scale(1.05);
+    }
+  }
+
+  &__footerFlex {
+    @extend %flex;
+    @extend %alignCenter;
+    @extend %justifySpaceBetween;
+    gap: 20px;
+  }
+}

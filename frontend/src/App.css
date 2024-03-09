@@ -1,0 +1,66 @@
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #CCCCCC #F5F5F5;
+
+}
+
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+  background: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 10px;
+  border: 1px solid #FFFFFF;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login>img {
+  margin-bottom: 2.5rem;
+}
+
+.login-page {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(7, 81, 156);
+}
+
+.login-form {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 400px;
+  width: 100%;
+}
+
+.recharts-cartesian-grid-horizontal line {
+  stroke-width: 0.5;
+  /* change this to desired thickness */
+}
+
+.recharts-xAxis .recharts-cartesian-axis-tick-line,
+.recharts-yAxis .recharts-cartesian-axis-tick-line {
+  stroke-width: 0.5;
+  /* change this to desired thickness */
+}

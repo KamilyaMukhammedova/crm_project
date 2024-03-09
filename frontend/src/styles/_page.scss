@@ -1,0 +1,23 @@
+@import './basic';
+
+.content {
+  height: calc(100vh - 10px);
+  overflow: auto;
+  padding: 25px 46px 50px;
+  background-color: var(--primary-bg-color);
+}
+
+.content::-webkit-scrollbar {
+  width: 0;
+}
+
+.basicPage {
+  @extend %basic;
+}
+
+.topBlock {
+    @extend %flex;
+    @extend %alignCenter;
+    @extend %justifySpaceBetween;
+    margin-bottom: 20px;
+}

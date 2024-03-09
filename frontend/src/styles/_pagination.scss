@@ -1,0 +1,70 @@
+@import "./basic";
+
+.paginationWrapper {
+  @extend %basic;
+  margin: 15px 0;
+}
+
+.pagination {
+  @extend %flex;
+  @extend %alignCenter;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+}
+
+.pages li {
+  display: none;
+}
+
+.pages li:first-child,
+.pages li:last-child,
+.pages li.active,
+.pages li.active+li,
+.pages li.active+li+li,
+.pages li.active~li,
+.pages li.active~li~li {
+  display: inline;
+}
+
+.pagination li {
+  margin: 0 5px;
+  font-size: 16px;
+}
+
+.pagination li a {
+  @extend %flex;
+  @extend %alignCenter;
+  font-weight: 400;
+  color: var(--primary-text-color);
+  line-height: 0;
+
+  &:hover {
+    color: rgba(255, 102, 0, 0.3);
+  }
+}
+
+.pagination .active a {
+  color: var(--primary-accent-color);
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block;
+  position: relative;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+.pagination .break-me a {
+  cursor: default;
+  color: var(--primary-text-color);
+}
+
+.pagination .previous a,
+.pagination .next a {
+  color: var(--primary-text-color);
+}
+
+.pagination .previous span:hover,
+.pagination .next span:hover {
+  color: var(--primary-accent-color) !important;
+}

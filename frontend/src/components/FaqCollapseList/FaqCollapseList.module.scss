@@ -1,0 +1,19 @@
+@import "../../styles/basic";
+
+.spaceWrapper {
+  @extend %flex;
+  margin-top: 4rem;
+}
+
+.collapse {
+  @extend %basic;
+  @extend %alignCenter;
+  box-shadow: var(--box-shadow-light-grey);
+
+  &__header {
+    @extend %flex;
+    @extend %justifySpaceBetween;
+    @extend %alignCenter;
+    width: 100% !important;
+  }
+}

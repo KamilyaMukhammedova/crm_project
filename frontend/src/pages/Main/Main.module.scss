@@ -1,0 +1,30 @@
+@import "../../styles/basic";
+
+.mainPage {
+  @extend %basic;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 500 !important;
+    margin-bottom: 20px;
+  }
+
+  &__inner {
+    @extend %flex;
+    align-items: stretch;
+    width: 80%;
+    gap: 20px;
+  }
+
+  &__users {
+    width: 30%;
+
+    @media screen and (max-width: 1150px) {
+      width: 50%;
+    }
+  }
+
+  &__bonuses {
+    width: 30%;
+  }
+}

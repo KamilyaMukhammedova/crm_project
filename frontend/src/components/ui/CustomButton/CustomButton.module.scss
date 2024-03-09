@@ -1,0 +1,28 @@
+@import "../../../styles/basic";
+
+.customButton {
+  @extend %basic;
+  @extend %flex;
+  @extend %alignCenter;
+  gap: 5px;
+
+  &:disabled {
+    color: var(--disabled-grey-color) !important;
+  }
+
+  &_red {
+    color: var(--red-color);
+
+    &:hover {
+      color: var(--red-color) !important;
+    }
+  }
+
+  &_green {
+    color: var(--green-color);
+
+    &:hover {
+      color: var(--green-color) !important;
+    }
+  }
+}

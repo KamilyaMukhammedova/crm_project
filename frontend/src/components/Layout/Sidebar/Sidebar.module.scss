@@ -1,0 +1,144 @@
+@import "../../../styles/basic";
+
+%hover {
+  cursor: pointer;
+  background-color: var(--primary-bg-color);
+  box-shadow: var(--box-shadow-light-grey);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sidebar {
+  @extend %basic;
+  height: inherit;
+  position: relative;
+  background-color: var(--white-color) !important;
+  animation: fadeIn 1s;
+  box-shadow: 9px 0 7px -8px rgba(55, 55, 55, 0.10), -9px 0 7px -8px rgba(55, 55, 55, 0.10);
+
+  &__scrollWrapper {
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 60px 28px 10px 28px;
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+  }
+
+  &__logoWrapper {
+    @extend %flex;
+    @extend %alignCenter;
+    justify-content: end;
+    margin-bottom: 60px;
+    gap: 30px;
+  }
+
+  &__arrow {
+    @extend %flex;
+    align-self: start;
+    padding-top: 8px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__board {
+    margin-bottom: 16px;
+  }
+
+  &__boardCollapse {
+    @extend %flex;
+    @extend %alignCenter;
+    flex-direction: column;
+  }
+
+  &__boardTitle {
+    @extend %flex;
+    @extend %alignCenter;
+    font-weight: 500;
+    color: var(--primary-accent-color);
+    letter-spacing: 0.32px;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all 0.3s,visibility 0s;
+
+    &:hover {
+      @extend %hover;
+    }
+  }
+
+  &__boardSectionWrapper {
+    padding-left: 18px;
+  }
+
+  &__active {
+    background: linear-gradient(to right, #FF6600 2px, var(--primary-bg-color) 6px);
+  }
+
+  &__section {
+    @extend %flex;
+    @extend %alignCenter;
+    gap: 8px;
+    line-height: 19.36px;
+    margin-bottom: 8px;
+    padding: 5px 5px 5px 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+    transition: all 0.3s,visibility 0s;
+
+    &:hover {
+      @extend %hover;
+    }
+  }
+
+  &__downUpIcon {
+    margin-left: auto;
+    transition: all 0.3s,visibility 0s;
+  }
+
+  &__list {
+    border-radius: 5px;
+    padding: 15px 0 0 18px;
+    margin: -20px 0 15px;
+
+    & p {
+      margin-bottom: 8px;
+      //padding: 8px 0 8px 50px;
+      padding: 8px 10px 8px 40px;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__listCollapsed {
+    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 20px;
+    left: 7rem;
+    width: 200px;
+    height: 600px;
+    overflow-y: scroll;
+    background-color: #FFFFFF;
+    z-index: 700;
+    padding: 20px;
+
+    p {
+      padding: 8px;
+    }
+  }
+}

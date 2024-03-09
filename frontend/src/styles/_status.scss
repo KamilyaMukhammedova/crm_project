@@ -1,0 +1,13 @@
+%bold {
+  font-weight: 500;
+}
+
+.statusActive {
+  color: var(--green-color);
+  @extend %bold;
+}
+
+.statusInactive {
+  color: var(--red-color);
+  @extend %bold;
+}

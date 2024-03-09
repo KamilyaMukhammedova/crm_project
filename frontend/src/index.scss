@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import "styles/variables";
+@import "styles/basic";
+@import "styles/page";
+@import "styles/input";
+@import "styles/breadcrumbs";
+@import "styles/status";
+@import "styles/table";
+@import "styles/drugAndDrop";
+@import "styles/checkbox";
+@import "styles/pagination";
+@import "styles/formInModal";
+@import "styles/select";
+@import "styles/picker";
+@import "styles/collapse";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--primary-text-color) !important;
+  background-color: var(--primary-bg-color);
+  font: 300 var(--primary-font-size) var(--primary-font-family) !important;
+  letter-spacing: var(--primary-letter-spacing);
+}
+
+.ant-image .ant-image-mask  {
+  border-radius: 10px !important;
+}
+
+.rdw-editor-toolbar {
+  padding: 16px !important;
+  border-top-right-radius: 8px !important;
+  border-top-left-radius: 8px !important;
+}
+
+.rdw-dropdown-selectedtext {
+  color: var(--primary-text-color) !important;
+}
+
+
+
+
+
+

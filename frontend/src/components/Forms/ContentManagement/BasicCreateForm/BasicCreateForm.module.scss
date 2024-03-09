@@ -1,0 +1,18 @@
+@import "../../../../styles/basic";
+
+.basicCreateForm {
+  @extend %basic;
+
+  &__periodStatusWrapper {
+    @extend %flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+  }
+
+  &__newsStatusWrapper {
+    width: 20%;
+    height: inherit;
+  }
+}
+

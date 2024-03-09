@@ -1,0 +1,89 @@
+@import "../../../styles/basic";
+
+@mixin flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    @extend %basic;
+    @extend %flex;
+    @extend %alignCenter;
+    box-shadow: 0 4px 3px -2px rgba(55, 55, 55, 0.10);
+    padding: 0;
+    background-color: var(--white-color);
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    width: 100%;
+    font-size: 15px;
+}
+
+.headerContent {
+    @include flex-align-center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .dropdownWrapper {
+        @include flex-align-center;
+
+        span {
+            text-transform: capitalize;
+        }
+    }
+
+    .headerItemsRight {
+        @include flex-align-center;
+        column-gap: 25px;
+        padding: 0 30px 0 0;
+
+        >* {
+            cursor: pointer;
+        }
+    }
+
+    .headerUserInfo {
+        @include flex-align-center;
+        column-gap: 5px;
+
+        >* {
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .headerContent {
+        flex-direction: column;
+        padding: 0 10px;
+
+        .headerItemsRight {
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .headerContent {
+        .headerItemsRight {
+            column-gap: 10px;
+        }
+
+        .headerUserInfo {
+            column-gap: 5px;
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .headerContent {
+        .headerItemsRight {
+            column-gap: 10px;
+        }
+
+        .headerUserInfo {
+            column-gap: 5px;
+        }
+    }
+}

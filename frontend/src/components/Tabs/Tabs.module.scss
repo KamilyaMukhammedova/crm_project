@@ -1,0 +1,35 @@
+@import "../../styles/basic";
+
+.tabs {
+  @extend %basic;
+  margin-bottom: 20px;
+
+  &__wrapper {
+    @extend %flex;
+    @extend %alignCenter;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    width: 40%;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow-light-grey);
+  }
+
+  &__tab {
+    width: 33.333%;
+    border-color: transparent !important;
+    padding: 8px 30px !important;
+    height: initial;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+      color: inherit !important;
+      background-color: rgba(255, 102, 0, 0.3) !important;
+    }
+  }
+
+  &__activeTab {
+    color: var(--white-color);
+    background-color: var(--primary-accent-color);
+    border-color: transparent !important;
+  }
+}

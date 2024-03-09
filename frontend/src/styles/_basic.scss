@@ -1,0 +1,83 @@
+%basic {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  color: var(--primary-text-color);
+  letter-spacing: 0.32px;
+  font-weight: 300;
+}
+
+%flex {
+  display: flex;
+}
+
+%alignCenter {
+  align-items: center !important;
+}
+
+%alignStart {
+  align-items: start;
+}
+
+%justifyEnd {
+  justify-content: end;
+}
+
+%justifySpaceBetween {
+  justify-content: space-between;
+}
+
+%btn {
+  padding: 8px 30px !important;
+  height: initial;
+  border-radius: 8px;
+}
+
+%formItemMessage {
+  @extend %basic;
+  font-size: 12px !important;
+  margin: 5px 0;
+  font-weight: 300 !important;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.flexEnd {
+  @extend %flex;
+  @extend %justifyEnd;
+  @extend %alignCenter;
+  gap: 5px;
+}
+
+.basicFlex {
+  @extend %flex;
+  @extend %alignCenter;
+}
+
+.smallText {
+  font-size: 12px;
+}
+
+.error {
+  @extend %formItemMessage;
+  color: var(--red-color);
+}
+
+.warning {
+  @extend %formItemMessage;
+  color: var(--yellow-color);
+}
+
+.widthMedium {
+  width: 78%;
+}
+
+.widthSmall {
+  width: 20%;
+}
+
+.basicTable {
+  animation: fadeIn 1s;
+}

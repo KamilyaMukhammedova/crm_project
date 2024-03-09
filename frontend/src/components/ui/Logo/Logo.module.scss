@@ -1,0 +1,20 @@
+@import "../../../../src/styles/basic";
+
+.logoWrapper {
+  @extend %basic;
+  text-align: center;
+  transition: all 0.3s,visibility 0s;
+
+  span {
+    font-size: 20px;
+    font-weight: 700 !important;
+    color: var(--primary-accent-color);
+    letter-spacing: 0.4px !important;
+  }
+
+  div, span {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
