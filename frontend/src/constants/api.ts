@@ -1,5 +1,7 @@
 const GENERAL_URL = '/api/v1/admin/';
 
+const PROFILE_URL = '/api/v1/users/profile/';
+
 export const AUTH_BASIC_URL = '/api/v1/users/auth/';
 
 export const AUTH_ADMIN_URL = AUTH_BASIC_URL + 'admin/';

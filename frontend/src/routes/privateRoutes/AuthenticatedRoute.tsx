@@ -1,4 +1,4 @@
-// import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-routers-dom";
 // import { useAppSelector } from "../../hooks/redux";
 // import LayoutView from "../../components/LayoutView/LayoutView";
 //
@@ -18,7 +18,6 @@ import LayoutView from "../../components/LayoutView/LayoutView";
 
 const AuthenticatedRoute = () => {
     const accessToken = localStorage.getItem('indenim:a:token');
-    console.log('token ', accessToken)
 
     return accessToken ? <LayoutView /> : <Navigate to='/login' />
 };

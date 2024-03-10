@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { fetchProfileAction } from "../../store/profile/ProfileActions";
 import Sidebar from "../Layout/Sidebar/Sidebar";
 import Header from "../Layout/Header/Header";
-import { Outlet } from "react-router-dom";
-import { fetchProfileAction } from "../../store/profile/ProfileActions";
 
 const LayoutView = () => {
     const dispatch = useAppDispatch();
