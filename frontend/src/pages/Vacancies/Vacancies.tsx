@@ -31,7 +31,7 @@ const Vacancies: FC = () => {
         });
     };
 
-    const onCvList = (vacancyId: number) => {
+    const onCvList = (vacancyId: string) => {
         const languageFromUrl = new URLSearchParams(window.location.search).get('lang') || 'en';
         navigate(`/content_management/vacancies/${vacancyId}/cv_list?lang=${languageFromUrl}`);
     };

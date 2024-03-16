@@ -21,7 +21,7 @@ export const fetchPromotionsListAction = createAsyncThunk<IPromotionsFullData | 
     }
 );
 
-export const fetchOnePromotionAction = createAsyncThunk<IPromotionsBasic | null, number>(
+export const fetchOnePromotionAction = createAsyncThunk<IPromotionsBasic | null, string>(
     'onePromotion/fetch',
     async (promId) => {
         const response = await axiosAPI.get<IPromotionsBasic | null>(`${PROMOTIONS_URL}${promId}/`);
@@ -30,7 +30,7 @@ export const fetchOnePromotionAction = createAsyncThunk<IPromotionsBasic | null,
     }
 );
 
-export const deletePromotionAction = createAsyncThunk<void, number>(
+export const deletePromotionAction = createAsyncThunk<void, string>(
     'promotion/delete',
     async (promotionId) => {
         await axiosAPI.delete(`${PROMOTIONS_URL}${promotionId}/`);

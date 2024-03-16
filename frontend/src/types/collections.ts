@@ -1,7 +1,7 @@
 import { ICategory, IDepartement, IResponseWithPagination } from "./basic";
 
 export interface ICollection {
-    id: number,
+    _id: string,
     detail_image: string,
     preview: string,
     title_ru: string,
@@ -18,7 +18,7 @@ export interface ICollectionsFullData extends IResponseWithPagination {
 }
 
 export interface ICollectionFullData {
-    id: number,
+    _id: string,
     detail_image: string,
     preview: string,
     title_ru: string,
@@ -41,7 +41,7 @@ export interface ICollectionFullData {
 
 export interface IEditedCollectionFullData {
     dataToEdit: CreatedCollection,
-    collectionId: number,
+    collectionId: string,
 }
 
-export type CreatedCollection = Omit<ICollection, 'id' | 'created_date' | 'is_title_black' | 'detail_image'>;
+export type CreatedCollection = Omit<ICollection, '_id' | 'created_date' | 'is_title_black' | 'detail_image'>;

@@ -26,7 +26,7 @@ const Products: FC = () => {
 
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [addToBestsellersError, setAddToBestsellersError] = useState('');
-    const [currentProductId, setCurrentProductId] = useState<number | null>(null);
+    const [currentProductId, setCurrentProductId] = useState<string | null>(null);
     const [selectedCollections, setSelectedCollections] = useState<{ [key: string]: boolean } | null>(null);
 
     const onSearchConfirm = async (query: string) => {
@@ -34,7 +34,7 @@ const Products: FC = () => {
         await dispatch(fetchProductsListAction(query));
     };
 
-    const addToBestsellers = (id: number) => {
+    const addToBestsellers = (id: string) => {
         setCurrentProductId(id);
         setIsAddModalOpen(true);
         setAddToBestsellersError('');

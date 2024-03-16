@@ -11,15 +11,15 @@ import styles from "./FaqCollapseList.module.scss";
 
 interface IProps {
     questions: Faq[],
-    onEdit: (id: number) => void,
-    onDelete: (id: number) => void,
+    onEdit: (id: string) => void,
+    onDelete: (id: string) => void,
 }
 
 const FaqCollapseList: FC<IProps> = ({questions, onEdit, onDelete}) => {
     const titleDataIndex = generateDataIndexWithCurrentLanguage('title') as keyof Faq;
     const descriptionDataIndex = generateDataIndexWithCurrentLanguage('description') as keyof Faq;
 
-    const openDeleteModal = (event: React.MouseEvent<HTMLButtonElement>, questionId: number) => {
+    const openDeleteModal = (event: React.MouseEvent<HTMLButtonElement>, questionId: string) => {
         event.stopPropagation();
         onDelete(questionId);
     };
@@ -29,19 +29,19 @@ const FaqCollapseList: FC<IProps> = ({questions, onEdit, onDelete}) => {
             {
                 questions.map(question => (
                     <Collapse
-                        key={question.id}
+                        key={question._id}
                         collapsible="header"
                         className={styles.collapse}
                         items={[
                             {
-                                key: question.id,
+                                key: question._id,
                                 label: (
                                     <div className={styles.collapse__header}>
                                         <p>{question[titleDataIndex]}</p>
                                         <div className={'flexEnd'}>
                                             <StatusColumn status={question.is_active}/>
-                                            <CustomButton click={() => onEdit(question.id)}/>
-                                            <DeleteButton click={(event) => openDeleteModal(event, question.id)}/>
+                                            <CustomButton click={() => onEdit(question._id)}/>
+                                            <DeleteButton click={(event) => openDeleteModal(event, question._id)}/>
                                         </div>
                                     </div>
                                 ),

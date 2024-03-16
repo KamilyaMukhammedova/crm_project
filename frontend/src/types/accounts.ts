@@ -1,7 +1,7 @@
 import { IResponseWithPagination } from "./basic";
 
 export interface IAccount {
-    id: number,
+    _id: string,
     avatar: string,
     phone: string,
     username: string,

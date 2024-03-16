@@ -52,7 +52,7 @@ const CreatePromotion: FC = () => {
 
     useEffect(() => {
         const getOnePromData = async () => {
-            promId && await dispatch(fetchOnePromotionAction(parseInt(promId)));
+            promId && await dispatch(fetchOnePromotionAction(promId));
         };
 
         if (promId) {
@@ -66,7 +66,7 @@ const CreatePromotion: FC = () => {
 
     useEffect(() => {
         if(promId) {
-            if (onePromotion && onePromotion?.id === parseInt(promId)) {
+            if (onePromotion && onePromotion?._id === promId) {
                 const editedPromDataBasic: BasicFormState = createStateObjForEditForm(INITIAL_BASIC_CREATE_EDIT_STATE, onePromotion);
                 const editedPromDataPeriod: IPeriodFormState = createStateObjForEditForm(INITIAL_PERIOD_STATE, onePromotion);
                 const editedPromDataStatus: IStatusFormState = createStateObjForEditForm(INITIAL_STATUS_STATE, onePromotion);

@@ -17,7 +17,7 @@ export const fetchCollectionsListAction = createAsyncThunk<ICollectionsFullData 
     }
 );
 
-export const fetchOneCollectionAction = createAsyncThunk<ICollectionFullData | null, number>(
+export const fetchOneCollectionAction = createAsyncThunk<ICollectionFullData | null, string>(
     'oneCollection/fetch',
     async (collectionId) => {
         const response = await axiosAPI.get<ICollectionFullData | null>(`${COLLECTIONS_URL}${collectionId}/`);
@@ -26,7 +26,7 @@ export const fetchOneCollectionAction = createAsyncThunk<ICollectionFullData | n
     }
 );
 
-export const deleteCollectionAction = createAsyncThunk<void, number>(
+export const deleteCollectionAction = createAsyncThunk<void, string>(
     'collection/delete',
     async (collectionId) => {
         await axiosAPI.delete(`${COLLECTIONS_URL}${collectionId}/`);

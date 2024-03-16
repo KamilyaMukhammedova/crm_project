@@ -13,7 +13,7 @@ export const fetchUniqueListAction = createAsyncThunk<IUniqueListFullData | null
     }
 );
 
-export const deleteUniqueListItemAction = createAsyncThunk<void, number>(
+export const deleteUniqueListItemAction = createAsyncThunk<void, string>(
     'uniqueListItem/delete',
     async (itemId) => {
         await axiosAPI.delete(`${UNIQUE_LIST_URL}${itemId}/`);

@@ -10,6 +10,6 @@ export interface IProductsFullData extends IResponseWithPagination {
 }
 
 export interface IProductInBestsellers {
-    product_id: number,
+    product_id: string,
     collections: (number | undefined)[],
 }

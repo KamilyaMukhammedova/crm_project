@@ -38,7 +38,7 @@ const CreateFaq: FC = () => {
 
     useEffect(() => {
         const getOneFaqData = async () => {
-            faqId && await dispatch(fetchOneFaqAction(parseInt(faqId)));
+            faqId && await dispatch(fetchOneFaqAction(faqId));
         };
 
         if (faqId) {
@@ -51,7 +51,7 @@ const CreateFaq: FC = () => {
 
     useEffect(() => {
         if(faqId) {
-            if (oneFaq && oneFaq?.id === parseInt(faqId)) {
+            if (oneFaq && oneFaq?._id === faqId) {
                 const editedFaqDataBasic: FaqFormState = createStateObjForEditForm(FAQ_FORM_INITIAL_STATE, oneFaq);
                 const editedFaqDataStatus: IStatusFormState = createStateObjForEditForm(INITIAL_STATUS_STATE, oneFaq);
 

@@ -23,8 +23,8 @@ interface IProps {
     selectedProduct: IBlackListProduct | null,
     setSelectedProduct: React.Dispatch<React.SetStateAction<IBlackListProduct | null>>,
     setPercent: React.Dispatch<React.SetStateAction<number>>,
-    selectedProductColorId: number | null,
-    setSelectedProductColorId: React.Dispatch<React.SetStateAction<number | null>>,
+    selectedProductColorId: string | null,
+    setSelectedProductColorId: React.Dispatch<React.SetStateAction<string | null>>,
     error?: string,
 }
 
@@ -62,11 +62,11 @@ const UniqueListAddForm: FC<IProps> = ({
 
     useEffect(() => {
         if (selectedProduct && selectedProductColorId) {
-            const uniqueListItemWithSelectedProduct = uniqueListItems.find(item => item.product.id === selectedProduct.id);
+            const uniqueListItemWithSelectedProduct = uniqueListItems.find(item => item.product._id === selectedProduct._id);
 
             if (uniqueListItemWithSelectedProduct &&
                 uniqueListItemWithSelectedProduct.product_color &&
-                uniqueListItemWithSelectedProduct.product_color.id === selectedProductColorId
+                uniqueListItemWithSelectedProduct.product_color._id === selectedProductColorId
             ) {
                 setConfirmIsDisabled(true);
             } else {
@@ -80,7 +80,7 @@ const UniqueListAddForm: FC<IProps> = ({
         setPage(1);
         setLoadingMore(false);
 
-        const selectedProduct: IBlackListProduct | undefined = displayedProducts.find(item => item.id === +value);
+        const selectedProduct: IBlackListProduct | undefined = displayedProducts.find(item => item._id === value);
 
         if (selectedProduct) {
             setSelectedProduct(selectedProduct);
@@ -166,12 +166,12 @@ const UniqueListAddForm: FC<IProps> = ({
                         }
                         loading={productsFetching}
                         size={'large'}
-                        filterOption={(input, option) =>
-                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                        }
+                        // filterOption={(input, option) =>
+                        //     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        // }
                         options={[...displayedProducts.map(product => {
                             return {
-                                value: product.id,
+                                value: product._id,
                                 label: product.title
                             }
                         }), loadingMore ? {value: 'loading', label: 'Loading...'} : {}]}
@@ -189,9 +189,9 @@ const UniqueListAddForm: FC<IProps> = ({
                             selectedProduct && productColors.length > 0 ?
                                 productColors.map(color => (
                                     <div
-                                        key={color.id}
-                                        className={`formInModal__color ${selectedProductColorId === color.id ? 'formInModal_active' : 'formInModal_inactive'}`}
-                                        onClick={() => setSelectedProductColorId(color.id)}
+                                        key={color._id}
+                                        className={`formInModal__color ${selectedProductColorId === color._id ? 'formInModal_active' : 'formInModal_inactive'}`}
+                                        onClick={() => setSelectedProductColorId(color._id)}
                                     >
                                         {color.title}
                                     </div>

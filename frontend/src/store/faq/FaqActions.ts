@@ -12,7 +12,7 @@ export const fetchFaqListAction = createAsyncThunk<IFaqFullData | null, string |
     }
 );
 
-export const fetchOneFaqAction = createAsyncThunk<Faq | null, number>(
+export const fetchOneFaqAction = createAsyncThunk<Faq | null, string>(
     'oneFaq/fetch',
     async (faqId) => {
         const response = await axiosAPI.get<Faq | null>(`${FAQ_URL}${faqId}/`);
@@ -35,7 +35,7 @@ export const editFaqAction = createAsyncThunk<void, IEditedFaqFullData>(
     }
 );
 
-export const deleteFaqAction = createAsyncThunk<void, number>(
+export const deleteFaqAction = createAsyncThunk<void, string>(
     'faq/delete',
     async (faqId) => {
         await axiosAPI.delete(`${FAQ_URL}${faqId}/`);

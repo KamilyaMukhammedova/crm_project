@@ -77,7 +77,7 @@ export const blackListBasicColumns = [
     },
 ];
 
-export const generateBlackListActionsColumns = (onDelete: (id: number) => void, removeBtnTitle: string, isDisabled = false) => {
+export const generateBlackListActionsColumns = (onDelete: (id: string) => void, removeBtnTitle: string, isDisabled = false) => {
     return [
         {
             title: '',
@@ -88,7 +88,7 @@ export const generateBlackListActionsColumns = (onDelete: (id: number) => void, 
                 <div className={'flexEnd'}>
                     <DeleteButton
                         title={`Remove from ${removeBtnTitle}`}
-                        click={() => onDelete(record.id)}
+                        click={() => onDelete(record._id)}
                         isDisabled={isDisabled}
                     />
                 </div>
@@ -97,7 +97,7 @@ export const generateBlackListActionsColumns = (onDelete: (id: number) => void, 
     ];
 };
 
-export const generateColumns = (onDelete: (id: number) => void) => {
+export const generateColumns = (onDelete: (id: string) => void) => {
     return [
         ...blackListBasicColumns,
         ...generateBlackListActionsColumns(onDelete, 'Black list'),

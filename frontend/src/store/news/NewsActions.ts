@@ -15,7 +15,7 @@ export const fetchNewsListAction = createAsyncThunk<INewsFullData | null, string
     }
 );
 
-export const fetchOneNewsAction = createAsyncThunk<IOneNews | null, number>(
+export const fetchOneNewsAction = createAsyncThunk<IOneNews | null, string>(
     'oneNews/fetch',
     async (newsId) => {
         const response = await axiosAPI.get<IOneNews | null>(`${NEWS_URL}${newsId}/`);
@@ -24,7 +24,7 @@ export const fetchOneNewsAction = createAsyncThunk<IOneNews | null, number>(
     }
 );
 
-export const deleteNewsAction = createAsyncThunk<void, number>(
+export const deleteNewsAction = createAsyncThunk<void, string>(
     'news/delete',
     async (newsId) => {
         await axiosAPI.delete(`${NEWS_URL}${newsId}/`);

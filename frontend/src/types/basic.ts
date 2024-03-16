@@ -2,7 +2,7 @@ import { AnyAction, ThunkAction } from "@reduxjs/toolkit";
 import { RootState } from "../store/store";
 
 export interface IBasicModel {
-    id: number,
+    _id: string,
     created_date: string,
     is_active: boolean,
     title_ru: string,
@@ -22,7 +22,8 @@ export interface IBreadcrumbsItem {
 }
 
 export interface IImage {
-    id: number,
+    // id: number,
+    _id: string,
     file: string,
 }
 

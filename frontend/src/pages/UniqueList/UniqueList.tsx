@@ -32,7 +32,7 @@ const UniqueList: FC = () => {
     const [percent, setPercent] = useState(0);
 
     const [selectedProduct, setSelectedProduct] = useState<IBlackListProduct | null>(null);
-    const [selectedProductColorId, setSelectedProductColorId] = useState<number | null>(null);
+    const [selectedProductColorId, setSelectedProductColorId] = useState<string | null>(null);
 
     const pageProps = useBasicPage(
         fetchUniqueListAction,
@@ -63,7 +63,7 @@ const UniqueList: FC = () => {
     const onAddConfirm = async () => {
         if (selectedProduct && selectedProductColorId) {
             const newUniqueListItem: ICreatedUniqueListItem = {
-                product_id: selectedProduct.id,
+                product_id: selectedProduct._id,
                 product_color_id: selectedProductColorId,
                 percent: percent,
             };

@@ -70,13 +70,13 @@ const BlackListAddForm: FC<IProps> = ({
     const handleChange = (value: string) => {
         resetSelect();
 
-        const selectedProduct: IBlackListProduct | undefined = displayedProducts.find(item => item.id === +value);
+        const selectedProduct: IBlackListProduct | undefined = displayedProducts.find(item => item._id === value);
 
         const colorsInitialState = {} as { [key: string]: boolean };
 
         if (selectedProduct) {
             selectedProduct?.colors.forEach(item => {
-                colorsInitialState[item.id] = false;
+                colorsInitialState[item._id] = false;
             });
 
             setSelectedProduct(selectedProduct);
@@ -176,12 +176,12 @@ const BlackListAddForm: FC<IProps> = ({
                         }
                         loading={productsFetching}
                         size={'large'}
-                        filterOption={(input, option) =>
-                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                        }
+                        // filterOption={(input, option) =>
+                        //     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        // }
                         options={[...displayedProducts.map(product => {
                             return {
-                                value: product.id,
+                                value: product._id,
                                 label: product.title
                             }
                         }), loadingMore ? {value: 'loading', label: 'Loading...'} : {}]}
@@ -206,9 +206,9 @@ const BlackListAddForm: FC<IProps> = ({
                             (selectedProduct && selectedProductColors) &&
                             selectedProduct.colors.map(color => (
                                 <div
-                                    key={color.id}
-                                    className={`formInModal__color ${selectedProductColors[color.id] ? 'formInModal_active' : 'formInModal_inactive'}`}
-                                    onClick={() => onColorClick(color.id.toString())}
+                                    key={color._id}
+                                    className={`formInModal__color ${selectedProductColors[color._id] ? 'formInModal_active' : 'formInModal_inactive'}`}
+                                    onClick={() => onColorClick(color._id.toString())}
                                 >
                                     {color.title}
                                 </div>

@@ -18,15 +18,15 @@ export interface IBasicCreateEdit {
     setFormHasRegexWarning: React.Dispatch<React.SetStateAction<boolean>>,
     setFormCreateError: React.Dispatch<React.SetStateAction<string>>,
     setFormEditError: React.Dispatch<React.SetStateAction<string>>,
-    setCurrentItemId: React.Dispatch<React.SetStateAction<number | null>>,
+    setCurrentItemId: React.Dispatch<React.SetStateAction<string | null>>,
 }
 
 export interface ICreateEditInModal extends IBasicCreateEdit {
-    currentItemId: number | null,
+    currentItemId: string | null,
     isModalCreateOpen: boolean,
     isEditedMode: boolean,
     handleOpenCreateModal: () => void,
-    handleOpenEditModal: (itemId: number) => void,
+    handleOpenEditModal: (itemId: string) => void,
     handleCloseCreateModal: () => void,
     onActionsAfterCreateAndEdit: (data: IActionsAfterCreateEditProps) => Promise<void>,
 }
@@ -41,7 +41,7 @@ type FormState = ICollectionFormState | IBannerFormState | ICreatedAccount;
 export const useCreateEdit = <T extends FormState>(
     isCreateEditFormInModal: boolean,
     dataSelector: (state: RootState) => any,
-    fetchOneItem?: (itemId: number) => ThunkAction<unknown, RootState, undefined, AnyAction>,
+    fetchOneItem?: (itemId: string) => ThunkAction<unknown, RootState, undefined, AnyAction>,
     initialFormState?: T,
     setFormState?: React.Dispatch<React.SetStateAction<T>>,
 ): IBasicCreateEdit | ICreateEditInModal => {
@@ -55,7 +55,7 @@ export const useCreateEdit = <T extends FormState>(
 
     const [formCreateError, setFormCreateError] = useState('');
     const [formEditError, setFormEditError] = useState('');
-    const [currentItemId, setCurrentItemId] = useState<number | null>(null);
+    const [currentItemId, setCurrentItemId] = useState<string | null>(null);
 
     useEffect(() => {
         if(!isCreateEditFormInModal) {
@@ -74,7 +74,7 @@ export const useCreateEdit = <T extends FormState>(
         setFormCreateError('');
     };
 
-    const handleOpenEditModal = async (itemId: number) => {
+    const handleOpenEditModal = async (itemId: string) => {
         setCurrentItemId(itemId);
         fetchOneItem && await dispatch(fetchOneItem(itemId));
         setIsModalCreateOpen(true);

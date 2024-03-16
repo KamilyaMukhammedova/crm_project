@@ -225,7 +225,7 @@ const BlackList: FC = () => {
                 message.error(t(FORM_ERROR_MESSAGES.fields_required));
             } else {
                 const newBlackListItemData = {
-                    product_id: selectedProduct ? +selectedProduct?.id : '',
+                    product_id: selectedProduct ? +selectedProduct?._id : '',
                     product_colors: colorsIdArray,
                 };
 

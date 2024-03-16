@@ -27,7 +27,7 @@ export const fetchBlackListProductsAction = createAsyncThunk<IBlackListProductLi
     }
 );
 
-export const deleteBlackListItemAction = createAsyncThunk<void, number>(
+export const deleteBlackListItemAction = createAsyncThunk<void, string>(
     'blackListItem/delete',
     async (itemId) => {
         await axiosAPI.delete(`${BLACK_LIST_URL}${itemId}/`);

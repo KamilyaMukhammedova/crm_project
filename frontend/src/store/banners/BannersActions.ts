@@ -13,7 +13,7 @@ export const fetchBannersListAction = createAsyncThunk<IBannersFullData | null, 
     }
 );
 
-export const fetchOneBannerAction = createAsyncThunk<IBanner | null, number>(
+export const fetchOneBannerAction = createAsyncThunk<IBanner | null, string>(
     'oneBanner/fetch',
     async (bannerId) => {
         const response = await axiosAPI.get<IBanner | null>(`${BANNERS_URL}${bannerId}/`);
@@ -22,7 +22,7 @@ export const fetchOneBannerAction = createAsyncThunk<IBanner | null, number>(
     }
 );
 
-export const deleteBannerAction = createAsyncThunk<void, number>(
+export const deleteBannerAction = createAsyncThunk<void, string>(
     'banner/delete',
     async (bannerId) => {
         await axiosAPI.delete(`${BANNERS_URL}${bannerId}/`);

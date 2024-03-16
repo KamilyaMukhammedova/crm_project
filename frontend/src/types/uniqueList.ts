@@ -10,7 +10,7 @@ export interface IUniqueListFullData extends IResponseWithPagination {
 }
 
 export interface ICreatedUniqueListItem {
-    product_id: number | string,
-    product_color_id: number,
+    product_id: string,
+    product_color_id: string | null,
     percent: number,
 }

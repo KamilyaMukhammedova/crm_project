@@ -40,7 +40,7 @@ const CreateNews: FC = () => {
     useEffect(() => {
         const getOneNewsData = async () => {
             if (newsId) {
-                await dispatch(fetchOneNewsAction(parseInt(newsId)));
+                await dispatch(fetchOneNewsAction(newsId));
             }
         };
 
@@ -54,7 +54,7 @@ const CreateNews: FC = () => {
 
     useEffect(() => {
         if(newsId) {
-            if (oneNewsData && oneNewsData?.id === parseInt(newsId)) {
+            if (oneNewsData && oneNewsData?._id === newsId) {
                 const editedNewsData: BasicFormState = createStateObjForEditForm(INITIAL_BASIC_CREATE_EDIT_STATE, oneNewsData);
                 setFormState(editedNewsData);
                 setStatusState({is_active: oneNewsData.is_active});

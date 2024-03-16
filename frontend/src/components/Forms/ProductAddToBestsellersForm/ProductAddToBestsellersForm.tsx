@@ -46,7 +46,7 @@ const ProductAddToBestsellersForm: FC<IProps> = ({
 
         if (collections) {
             collections.results.forEach(collection => {
-                selectedCollectionsInitialState[collection.id] = false;
+                selectedCollectionsInitialState[collection._id] = false;
             });
 
             setSelectedCollections(selectedCollectionsInitialState);
@@ -109,9 +109,9 @@ const ProductAddToBestsellersForm: FC<IProps> = ({
                             {
                                 collections && collections.results.map(collection => (
                                     <div
-                                        key={collection.id}
-                                        className={`formInModal__color ${selectedCollections && selectedCollections[collection.id] ? 'formInModal_active' : 'formInModal_inactive'}`}
-                                        onClick={() => onCollectionClick(collection.id.toString())}
+                                        key={collection._id}
+                                        className={`formInModal__color ${selectedCollections && selectedCollections[collection._id] ? 'formInModal_active' : 'formInModal_inactive'}`}
+                                        onClick={() => onCollectionClick(collection._id)}
                                     >
                                         {collection.title_en}
                                     </div>

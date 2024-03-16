@@ -55,7 +55,7 @@ const Collections: FC = () => {
 
     useEffect(() => {
         if(createEditProps.isModalCreateOpen && createEditProps.isEditedMode) {
-            if (oneCollection && oneCollection?.id === createEditProps.currentItemId) {
+            if (oneCollection && oneCollection?._id === createEditProps.currentItemId) {
                 const editedCollectionData: ICollectionFormState = createStateObjForEditForm(INITIAL_STATE_COLLECTION, oneCollection);
                 setCollectionFormState(editedCollectionData);
             }

@@ -1,6 +1,6 @@
 import { IBasicModel } from "./basic";
 
-export type BasicFormState = Omit<IBasicModel, 'id' | 'created_date' | 'is_active'> & {
+export type BasicFormState = Omit<IBasicModel, '_id' | 'created_date' | 'is_active'> & {
     detail_image: string,
     preview: string
 };
@@ -9,7 +9,7 @@ export type DrugAndDropPropsFormState = ICollectionFormState | BasicFormState | 
 
 export type RegexCollectionFormState = Pick<IBasicRegexFormState, 'title_en' | 'title_ru' | 'title_uz'>;
 
-export type FaqFormState = Omit<IBasicModel, 'small_description_ru' | 'small_description_en' | 'small_description_uz' | 'created_date' | 'id' | 'is_active'>;
+export type FaqFormState = Omit<IBasicModel, 'small_description_ru' | 'small_description_en' | 'small_description_uz' | 'created_date' | '_id' | 'is_active'>;
 
 export interface ICollectionFormState {
     title_ru: string,

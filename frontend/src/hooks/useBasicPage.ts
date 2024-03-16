@@ -15,7 +15,7 @@ export interface BasicPageProps {
 }
 
 export interface BasicPageCreateEditProps extends BasicPageProps {
-    onEdit: (id: number) => void;
+    onEdit: (id: string) => void;
     onCreate: () => void;
 }
 
@@ -65,7 +65,7 @@ export const useBasicPage = (
     }, []);
 
 
-    const onEdit = (id: number) => {
+    const onEdit = (id: string) => {
         if (isNavigationToCreateEditRequired) {
             const languageFromUrl = new URLSearchParams(window.location.search).get('lang') || 'en';
             navigate(`/${sectionName}/edit_${pageName}/${id}?lang=${languageFromUrl}`);

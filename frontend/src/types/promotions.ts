@@ -2,9 +2,9 @@ import { IBasicModel, IResponseWithPagination } from "./basic";
 
 export type Promotion = Omit<IPromotionsBasic, 'description_ru' | 'description_en' | 'description_uz'>;
 
-export type CreatedPromotion = Omit<Promotion, 'id' | 'created_date'>;
+export type CreatedPromotion = Omit<Promotion, '_id' | 'created_date'>;
 
-export type EditedPromotion = Omit<IPromotionsBasic, 'id' | 'created_date' | 'is_active'>;
+export type EditedPromotion = Omit<IPromotionsBasic, '_id' | 'created_date' | 'is_active'>;
 
 export interface IEditedPromFullData {
     dataToEdit: EditedPromotion,

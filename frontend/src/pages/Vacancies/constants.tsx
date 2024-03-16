@@ -17,7 +17,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: number) => void, onCvList : (id: number) => void) => {
+export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: string) => void, onCvList : (id: string) => void) => {
     return [
         {
             title: 'Title',
@@ -72,10 +72,10 @@ export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: num
                         title={'Cv list'}
                         icon={cvListIcon}
                         alt={'CV'}
-                        click={() => onCvList(record.id)}
+                        click={() => onCvList(record._id)}
                     />
-                    <CustomButton click={() => onEdit(record.id)}/>
-                    <DeleteButton click={() => onDelete(record.id)}/>
+                    <CustomButton click={() => onEdit(record._id)}/>
+                    <DeleteButton click={() => onDelete(record._id)}/>
                 </div>
             ),
         }

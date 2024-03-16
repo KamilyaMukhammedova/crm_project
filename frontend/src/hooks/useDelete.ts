@@ -8,7 +8,7 @@ import { AsyncThunkConfig } from "../types/basic";
 import { navigateToPageAfterDelete } from "../utils/navigateToPage";
 
 interface DeleteProps {
-    deleteAction: AsyncThunk<void, number, AsyncThunkConfig>,
+    deleteAction: AsyncThunk<void, string, AsyncThunkConfig>,
     currentPage: string,
     setCurrentPage: React.Dispatch<React.SetStateAction<string>>,
 }
@@ -24,9 +24,9 @@ export const useDelete = (
 
     const [deleteError, setDeleteError] = useState('');
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-    const [currentItemId, setCurrentItemId] = useState<number | null>(null);
+    const [currentItemId, setCurrentItemId] = useState<string | null>(null);
 
-    const openDeleteModal = (itemId: number) => {
+    const openDeleteModal = (itemId: string) => {
         setCurrentItemId(itemId);
         setIsModalDeleteOpen(true);
     };

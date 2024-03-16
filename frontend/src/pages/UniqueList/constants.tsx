@@ -12,7 +12,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onDelete: (id: number) => void) => {
+export const generateColumns = (onDelete: (id: string) => void) => {
     return [
         ...blackListBasicColumns,
         {

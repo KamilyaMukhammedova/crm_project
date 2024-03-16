@@ -2,10 +2,10 @@ import moment from "moment";
 import { Image } from 'antd';
 import { News } from "../../types/news";
 import { generateDataIndexWithCurrentLanguage } from "../../utils/translation";
-import { checkImageUrl } from "../../utils/table";
 import CustomButton from "../../components/ui/CustomButton/CustomButton";
 import DeleteButton from "../../components/ui/DeleteButton/DeleteButton";
 import StatusColumn from "../../components/ui/StatusColumn/StatusColumn";
+import { checkAndRenderImageUrl } from "../../utils/drugAndDrop";
 
 export const BREADCRUMBS_ITEMS = [
     {
@@ -18,7 +18,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: number) => void) => {
+export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: string) => void) => {
     return [
         {
             title: 'Title',
@@ -38,7 +38,7 @@ export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: num
             render: (text: string) => {
                 return (
                     <Image
-                        src={checkImageUrl(text)}
+                        src={checkAndRenderImageUrl(text)}
                         width={88.806}
                         height={89.66}
                         style={{borderRadius: '10px'}}
@@ -80,8 +80,8 @@ export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: num
             width: '40%',
             render: (_: string, record: News) => (
                 <div className={'flexEnd'}>
-                    <CustomButton click={() => onEdit(record.id)}/>
-                    <DeleteButton click={() => onDelete(record.id)}/>
+                    <CustomButton click={() => onEdit(record._id)}/>
+                    <DeleteButton click={() => onDelete(record._id)}/>
                 </div>
             ),
         },

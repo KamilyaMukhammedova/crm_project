@@ -16,7 +16,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onEdit: (id: number) => void, onChangePassword: (id: number) => void) => {
+export const generateColumns = (onEdit: (id: string) => void, onChangePassword: (id: string) => void) => {
     return [
         {
             title: 'User name',
@@ -67,9 +67,9 @@ export const generateColumns = (onEdit: (id: number) => void, onChangePassword: 
             width: '30%',
             render: (_: string, record: IAccount) => (
                 <div className={'flexEnd'}>
-                    <CustomButton click={() => onEdit(record.id)}/>
+                    <CustomButton click={() => onEdit(record._id)}/>
                     <CustomButton
-                        click={() => onChangePassword(record.id)}
+                        click={() => onChangePassword(record._id)}
                         icon={toolIcon}
                         title={'Change password'}
                         alt={'Tool'}

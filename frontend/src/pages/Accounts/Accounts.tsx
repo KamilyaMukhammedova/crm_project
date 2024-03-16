@@ -54,7 +54,7 @@ const Accounts: FC = () => {
 
     useEffect(() => {
         if (createEditProps.isEditedMode && createEditProps.currentItemId) {
-            const account = pageProps.data.results.find((item: IAccount) => item.id === createEditProps.currentItemId);
+            const account = pageProps.data.results.find((item: IAccount) => item._id === createEditProps.currentItemId);
 
             if (account) {
                 const editedAccountData: ICreatedAccount = createStateObjForEditForm(INITIAL_STATE_ACCOUNT, account);
@@ -64,7 +64,7 @@ const Accounts: FC = () => {
         }
     }, [createEditProps.isEditedMode, createEditProps.currentItemId]);
 
-    const openChangePasswordModal = (id: number) => {
+    const openChangePasswordModal = (id: string) => {
         createEditProps.setCurrentItemId(id);
         setIsChangePasswordModalOpen(true);
         setFormEditPasswordError('');

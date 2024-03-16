@@ -8,9 +8,9 @@ export const axiosAPI = axios.create({
 });
 
 const handleAuthError = () => {
-    // localStorage.removeItem('indenim:a:token');
-    // localStorage.removeItem('indenim:r:token');
-    // window.location.href = '/login';
+    localStorage.removeItem('indenim:a:token');
+    localStorage.removeItem('indenim:r:token');
+    window.location.href = '/login';
 };
 
 axiosAPI.interceptors.request.use(

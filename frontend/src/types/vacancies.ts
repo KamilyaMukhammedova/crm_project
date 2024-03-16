@@ -2,7 +2,7 @@ import { IBasicModel, IResponseWithPagination } from "./basic";
 
 export type Vacancy = Omit<IBasicModel, 'image'> & {requests: number};
 
-export type CreatedVacancy = Omit<IBasicModel, 'image' | 'created_date' | 'id'>;
+export type CreatedVacancy = Omit<IBasicModel, 'image' | 'created_date' | '_id'>;
 
 export interface IEditedVacancyFullData {
     dataToEdit: CreatedVacancy,

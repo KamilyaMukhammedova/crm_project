@@ -1,7 +1,7 @@
 import { IResponseWithPagination } from "./basic";
 
 export interface IBanner {
-    id: number,
+    _id: string,
     image: string,
     position: number,
 }
@@ -12,7 +12,7 @@ export interface IBannersFullData extends IResponseWithPagination {
 
 export interface IEditedBannerFullData {
     dataToEdit: CreatedBanner,
-    bannerId: number,
+    bannerId: string,
 }
 
-export type CreatedBanner = Omit<IBanner, 'id'>;
+export type CreatedBanner = Omit<IBanner, '_id'>;

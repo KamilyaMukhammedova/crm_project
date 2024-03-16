@@ -14,7 +14,9 @@ class TokenService {
 
     if(tokenData) {
       tokenData.refresh = refresh;
-      return tokenData.save();
+      await tokenData.save();
+
+      return tokenData;
     }
 
     const token = await tokenModel.create({

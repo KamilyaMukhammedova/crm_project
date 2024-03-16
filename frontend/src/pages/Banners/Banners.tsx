@@ -53,7 +53,7 @@ const Banners: FC = () => {
     }, []);
 
     useEffect(() => {
-        if (oneBanner && oneBanner?.id === createEditProps.currentItemId) {
+        if (oneBanner && oneBanner?._id === createEditProps.currentItemId) {
             const editedBannerData: IBannerFormState = createStateObjForEditForm(INITIAL_STATE_BANNER, oneBanner);
             setBannerFormState(editedBannerData);
         }

@@ -18,7 +18,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: number) => void) => {
+export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: string) => void) => {
     return [
         {
             title: 'Title',
@@ -70,8 +70,8 @@ export const generateColumns = (onEdit: (id: number) => void, onDelete: (id: num
             width: '50%',
             render: (_: string, record: ICollection) => (
                 <div className={'flexEnd'}>
-                    <CustomButton click={() => onEdit(record.id)}/>
-                    <DeleteButton click={() => onDelete(record.id)}/>
+                    <CustomButton click={() => onEdit(record._id)}/>
+                    <DeleteButton click={() => onDelete(record._id)}/>
                 </div>
             ),
         }

@@ -15,7 +15,7 @@ export const fetchVacanciesListAction = createAsyncThunk<IVacanciesFullData | nu
     }
 );
 
-export const fetchOneVacancyAction = createAsyncThunk<Vacancy | null, number>(
+export const fetchOneVacancyAction = createAsyncThunk<Vacancy | null, string>(
     'oneVacancy/fetch',
     async (vacancyId) => {
         const response = await axiosAPI.get<Vacancy | null>(`${VACANCIES_URL}${vacancyId}/`);
@@ -24,7 +24,7 @@ export const fetchOneVacancyAction = createAsyncThunk<Vacancy | null, number>(
     }
 );
 
-export const deleteVacancyAction = createAsyncThunk<void, number>(
+export const deleteVacancyAction = createAsyncThunk<void, string>(
     'vacancy/delete',
     async (vacancyId) => {
         await axiosAPI.delete(`${VACANCIES_URL}${vacancyId}/`);

@@ -17,7 +17,7 @@ export const BREADCRUMBS_ITEMS = [
     },
 ];
 
-export const generateColumns = (onAddToBestsellers: (id: number) => void) => {
+export const generateColumns = (onAddToBestsellers: (id: string) => void) => {
     return [
         {
             title: 'Product name',
@@ -76,7 +76,7 @@ export const generateColumns = (onAddToBestsellers: (id: number) => void) => {
             render: (_: string, record: IProduct) => (
                 <div className={'flexEnd'}>
                     <CustomButton
-                        click={() => onAddToBestsellers(record.id)}
+                        click={() => onAddToBestsellers(record._id)}
                         icon={bestsellerIcon}
                         title={'Add to Bestseller'}
                         alt={'Fire'}

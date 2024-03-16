@@ -39,7 +39,7 @@ const CreateVacancy: FC = () => {
 
     useEffect(() => {
         const getOneVacancyData = async () => {
-            vacancyId && await dispatch(fetchOneVacancyAction(parseInt(vacancyId)));
+            vacancyId && await dispatch(fetchOneVacancyAction(vacancyId));
         };
 
         if (vacancyId) {
@@ -52,7 +52,7 @@ const CreateVacancy: FC = () => {
 
     useEffect(() => {
         if(vacancyId) {
-            if (oneVacancy && oneVacancy?.id === parseInt(vacancyId)) {
+            if (oneVacancy && oneVacancy?._id === vacancyId) {
                 const editedVacancyDataBasic: BasicFormState = createStateObjForEditForm(INITIAL_BASIC_CREATE_EDIT_STATE, {
                     ...oneVacancy,
                     detail_image: '',

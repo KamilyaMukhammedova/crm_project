@@ -1,7 +1,7 @@
 import { IResponseWithPagination } from "./basic";
 
 export interface IBlackListItem {
-    id: number,
+    _id: string,
     product: IBasicProduct,
     product_color: IProductColor | null,
     created_at: string,
@@ -22,14 +22,14 @@ export interface ICreatedBlackListItem {
 }
 
 export interface IBlackListProduct {
-    id: number,
+    _id: string,
     model: string,
     title: string,
     colors: IBlackListProductColor[],
 }
 
 export interface IBlackListProductColor {
-    id: number,
+    _id: string,
     article: string,
     title: string,
     color: string,
@@ -38,7 +38,7 @@ export interface IBlackListProductColor {
 }
 
 export interface IBasicProduct {
-    id: number,
+    _id: string,
     model: string,
     title: string,
     compound: string,
@@ -49,7 +49,7 @@ export interface IBasicProduct {
 }
 
 export interface IProductCategoryOrDepartment {
-    id: number,
+    _id: string,
     code: string,
     name: string,
     name_en: string,
@@ -58,7 +58,7 @@ export interface IProductCategoryOrDepartment {
 }
 
 interface IProductColor {
-    id: number,
+    _id: string,
     article: string,
     title: string,
     color: string,
