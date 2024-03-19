@@ -1,5 +1,5 @@
-const ApiError = require("../exceptions/api-error");
 const mongoose = require("mongoose");
+const ApiError = require("../exceptions/api-error");
 
 module.exports = function (err, req, res, next) {
   if(err instanceof ApiError) {

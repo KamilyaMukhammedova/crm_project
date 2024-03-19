@@ -1,96 +1,99 @@
-const newsService = require('../services/news-service');
+const promotionsService = require('../services/promotions-service');
 
-class NewsController {
-  async getNews(req, res, next) {
+class PromotionsController {
+  async getPromotions(req, res, next) {
     try {
-      const newsData =  await newsService.getNews(req);
-      return res.send(newsData);
+      const promotionsData =  await promotionsService.getPromotions(req);
+
+      return res.send(promotionsData);
     } catch (e) {
       next(e);
     }
   }
 
-  async getOneNews(req, res, next) {
+  async getOnePromotion(req, res, next) {
     try {
-      const news =  await newsService.getOneNews(req.params.id);
-      return res.send(news);
+      const promotion =  await promotionsService.getOnePromotion(req.params.id);
+
+      return res.send(promotion);
     } catch (e) {
       next(e);
     }
   }
 
-  async createNews(req, res, next) {
+  async createPromotion(req, res, next) {
     try {
       const {
         title_en, title_ru, title_uz,
         description_en, description_ru, description_uz,
         small_description_en, small_description_ru, small_description_uz,
-        detail_image, preview, is_active
+        detail_image, preview, is_active, start_date, end_date
       } = req.body;
 
       if (
         !title_en || !title_ru || !title_uz ||
         !description_en || !description_ru || !description_uz ||
         !small_description_en || !small_description_ru || !small_description_uz ||
-        !detail_image || !preview
+        !detail_image || !preview || !start_date || !end_date
       ) {
         return res.status(400).send({message: 'All fields are required!'});
       }
 
-      const createdNews = await newsService.createNews(
+      const createdPromotion = await promotionsService.createPromotion(
         title_en, title_ru, title_uz,
         description_en, description_ru, description_uz,
         small_description_en, small_description_ru, small_description_uz,
-        detail_image, preview, is_active
+        detail_image, preview, is_active, start_date, end_date
       );
 
-      return res.send(createdNews);
+      return res.send(createdPromotion);
     } catch (e) {
       next(e);
     }
   }
 
-  async editNews(req, res, next) {
+  async editPromotion(req, res, next) {
     try {
-      const newsId = req.params.id;
+      const promotionId = req.params.id;
 
       const {
         title_en, title_ru, title_uz,
         description_en, description_ru, description_uz,
         small_description_en, small_description_ru, small_description_uz,
-        detail_image, preview, is_active
+        detail_image, preview, is_active, start_date, end_date
       } = req.body;
 
       if (
         !title_en || !title_ru || !title_uz ||
         !description_en || !description_ru || !description_uz ||
         !small_description_en || !small_description_ru || !small_description_uz ||
-        !detail_image || !preview
+        !detail_image || !preview || !start_date || !end_date
       ) {
         return res.status(400).send({message: 'All fields are required!'});
       }
 
-      const editedNews = await newsService.editNews(
+      const editedPromotion = await promotionsService.editPromotion(
         title_en, title_ru, title_uz,
         description_en, description_ru, description_uz,
         small_description_en, small_description_ru, small_description_uz,
-        detail_image, preview, is_active, newsId
+        detail_image, preview, is_active, start_date, end_date, promotionId
       );
 
-      return res.send(editedNews);
+      return res.send(editedPromotion);
     } catch (e) {
       next(e);
     }
   }
 
-  async deleteNews(req, res, next) {
+  async deletePromotion(req, res, next) {
     try {
-      await newsService.deleteNews(req.params.id);
-      return res.send({message: `News with id ${req.params.id} has been deleted`});
+      await promotionsService.deletePromotion(req.params.id);
+
+      return res.send({message: `Promotion with id ${req.params.id} has been deleted`});
     } catch (e) {
       next(e);
     }
   }
 }
 
-module.exports = new NewsController();
+module.exports = new PromotionsController();

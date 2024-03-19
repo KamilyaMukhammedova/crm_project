@@ -10,6 +10,7 @@ const app = express();
 const authRouters = require('./routers/auth');
 const bonusStatiscRouters = require('./routers/bonus-statistic');
 const newsRouters = require('./routers/news');
+const promotionsRouters = require('./routers/promotions');
 const imageRouter = require('./routers/image');
 const errorMiddleware = require('./middlewares/error-middleware');
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(process.env.GENERAL_AUTH_ROUTE_PATH, authRouters);
 app.use(process.env.GENERAL_ROUTE_PATH, bonusStatiscRouters);
 app.use(process.env.GENERAL_ROUTE_PATH, newsRouters);
+app.use(process.env.GENERAL_ROUTE_PATH, promotionsRouters);
 app.use(process.env.CLASSIFICATORS_ROUTE_PATH, imageRouter);
 app.use(errorMiddleware);
 

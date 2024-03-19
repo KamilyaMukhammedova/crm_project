@@ -2,10 +2,10 @@ import moment from "moment";
 import { Image } from 'antd';
 import { News } from "../../types/news";
 import { generateDataIndexWithCurrentLanguage } from "../../utils/translation";
+import { checkAndRenderImageUrl } from "../../utils/drugAndDrop";
 import CustomButton from "../../components/ui/CustomButton/CustomButton";
 import DeleteButton from "../../components/ui/DeleteButton/DeleteButton";
 import StatusColumn from "../../components/ui/StatusColumn/StatusColumn";
-import { checkAndRenderImageUrl } from "../../utils/drugAndDrop";
 
 export const BREADCRUMBS_ITEMS = [
     {

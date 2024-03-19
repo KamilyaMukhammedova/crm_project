@@ -1,9 +1,17 @@
 const {Schema, model} = require('mongoose');
 
-const NewsSchema = new Schema({
+const PromotionSchema = new Schema({
   created_date: {
     type: Date,
     default: () => Date.now(),
+  },
+  start_date: {
+    type: Date,
+    required: true,
+  },
+  end_date: {
+    type: Date,
+    required: true,
   },
   detail_image: {
     type: String,
@@ -55,4 +63,4 @@ const NewsSchema = new Schema({
   },
 });
 
-module.exports = model('News', NewsSchema);
+module.exports = model('Promotion', PromotionSchema);

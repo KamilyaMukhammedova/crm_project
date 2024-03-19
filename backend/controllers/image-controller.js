@@ -7,7 +7,6 @@ class ImageController {
     try {
       if(req.file) {
         const image = {file: '/uploads/' + req.file.filename};
-
         return res.send(image);
       } else {
         return res.status(400).send({message: 'Image is required!'});

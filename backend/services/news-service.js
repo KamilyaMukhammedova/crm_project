@@ -1,25 +1,15 @@
+const fs = require('fs').promises;
 const NewsModel = require('../models/news-model');
+const paginationService = require('../services/pagination-service');
 
 class NewsService {
-  async getNews(page, limit) {
-    const news = await NewsModel.find()
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .sort({ createdAt: -1 });
-
-    const count = await NewsModel.countDocuments();
-
-    return {
-      results: news,
-      count: Math.ceil(count / limit),
-      next: '',
-      previous: '',
-    };
+  async getNews(req) {
+    const data = await paginationService.getRequestWithPagination(req, NewsModel);
+    return data;
   }
 
   async getOneNews(id) {
     const news = await NewsModel.findById(id);
-
     return news;
   }
 
@@ -64,7 +54,12 @@ class NewsService {
   }
 
   async deleteNews(id) {
-    await NewsModel.findByIdAndDelete(id);
+    const news = await NewsModel.findById(id);
+    const filePath = '/Users/kamilya/crm_project/backend/public';
+
+    await fs.unlink(filePath + news.preview);
+    await fs.unlink(filePath + news.detail_image);
+    await NewsModel.deleteOne({ _id: id });
   }
 }
 
