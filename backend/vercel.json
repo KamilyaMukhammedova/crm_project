@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "index.jsgit"
+      "dest": "index.js"
     }
   ]
 }
