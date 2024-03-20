@@ -5,10 +5,5 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.js" }
-  ],
-  "functions": {
-    "routers/*.js": {
-      "runtime": "@vercel/node"
-    }
-  }
+  ]
 }
