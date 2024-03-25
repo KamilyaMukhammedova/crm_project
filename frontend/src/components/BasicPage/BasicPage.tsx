@@ -103,7 +103,7 @@ const BasicPage: FC<PropsWithChildren<IProps>> = ({
                                         dataSource={data}
                                         columns={columns || []}
                                         scroll={{x: 'max-content'}}
-                                        rowKey={(record) => record.id}
+                                        rowKey={(record) => record._id}
                                     /> :
                                     children
                             }

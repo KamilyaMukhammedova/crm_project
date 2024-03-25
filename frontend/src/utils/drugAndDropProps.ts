@@ -101,6 +101,7 @@ import { IImage } from "../types/basic";
 import { getImagePathFromUrl } from "./drugAndDrop";
 
 
+
 interface IData {
     fileList: UploadFile<any>[],
     setFileList: React.Dispatch<React.SetStateAction<UploadFile<any>[]>>,
@@ -177,6 +178,7 @@ export const generateDrugAndDropProps = (data: IData): UploadProps => {
         },
         onChange(info) {
             const {status} = info.file;
+            console.log(info)
 
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
