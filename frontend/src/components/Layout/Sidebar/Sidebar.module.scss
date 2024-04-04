@@ -35,15 +35,15 @@
   &__logoWrapper {
     @extend %flex;
     @extend %alignCenter;
-    justify-content: end;
+    //justify-content: end;
     margin-bottom: 60px;
-    gap: 30px;
+    //gap: 30px;
   }
 
   &__arrow {
     @extend %flex;
     align-self: start;
-    padding-top: 8px;
+    //padding-top: 8px;
 
     &:hover {
       cursor: pointer;

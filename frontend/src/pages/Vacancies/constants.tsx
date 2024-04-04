@@ -68,12 +68,12 @@ export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: str
             width: '45%',
             render: (_: string, record: Vacancy) => (
                 <div className={'flexEnd'}>
-                    <CustomButton
-                        title={'Cv list'}
-                        icon={cvListIcon}
-                        alt={'CV'}
-                        click={() => onCvList(record._id)}
-                    />
+                    {/*<CustomButton*/}
+                    {/*    title={'Cv list'}*/}
+                    {/*    icon={cvListIcon}*/}
+                    {/*    alt={'CV'}*/}
+                    {/*    click={() => onCvList(record._id)}*/}
+                    {/*/>*/}
                     <CustomButton click={() => onEdit(record._id)}/>
                     <DeleteButton click={() => onDelete(record._id)}/>
                 </div>

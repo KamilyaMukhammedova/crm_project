@@ -18,12 +18,12 @@ const Auth: FC<IProps> = ({fetching, onAuth}) => {
         <Card className={styles.loginForm}>
             <Logo isMini={false}/>
             <Form onFinish={handleSubmit}>
-                <p>Login</p>
+                <p>Username</p>
                 <Form.Item
                     name="username"
                     rules={[{required: true, message: "Field is required"}]}
                 >
-                    <Input placeholder="Enter your login" className={'input'}/>
+                    <Input placeholder="Enter your username" className={'input'}/>
                 </Form.Item>
                 <p>Password</p>
                 <Form.Item

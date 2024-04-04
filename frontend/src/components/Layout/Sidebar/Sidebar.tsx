@@ -155,7 +155,7 @@ const Sidebar: FC = () => {
                 <div className={styles.sidebar__scrollWrapper}>
                     <div className={styles.sidebar__logoWrapper}
                          style={sidebarCollapsed === 'collapsed' ? {gap: 0} : {}}>
-                        <Logo isMini={sidebarCollapsed === 'collapsed'}/>
+                        <Logo isMini={sidebarCollapsed === 'collapsed'} width={90}/>
                         <div className={styles.sidebar__arrow}>
                             <img
                                 src={sidebarCollapsed === 'noCollapsed' ? arrowLeft : arrowRight}
@@ -165,12 +165,12 @@ const Sidebar: FC = () => {
                         </div>
                     </div>
                     {contentManagementBoard}
-                    {usersAndAccountsBoard}
-                    {catalogBoard}
-                    {mopsAndAttributesDropDown}
-                    {reportsBoard}
-                    {storesBoard}
-                    {administrationBoard}
+                    {/*{usersAndAccountsBoard}*/}
+                    {/*{catalogBoard}*/}
+                    {/*{mopsAndAttributesDropDown}*/}
+                    {/*{reportsBoard}*/}
+                    {/*{storesBoard}*/}
+                    {/*{administrationBoard}*/}
                 </div>
             </div>
         </Sider>
