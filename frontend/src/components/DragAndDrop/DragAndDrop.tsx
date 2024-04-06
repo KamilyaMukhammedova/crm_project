@@ -6,6 +6,7 @@ import { DeleteOutlined, PaperClipOutlined } from "@ant-design/icons";
 import { FORM_REQUIRED_MESSAGES } from "../../constants/form";
 import { BasicFormState, IBannerFormState, ICollectionFormState } from "../../types/initialFormStates";
 import { checkAndRenderImageUrl, truncateFileName } from "../../utils/drugAndDrop";
+import { renderImage } from "../../utils/basic";
 import drugAndDropIcon from "../../assets/drug_and_drop_icon.svg";
 import styles from "./DragAndDrop.module.scss";
 
@@ -74,8 +75,13 @@ const DragAndDrop: FC<IProps> = ({
             >
                 {
                     imageUrlFromApi ?
+                        // <img
+                        //     src={checkAndRenderImageUrl(imageUrlFromApi)}
+                        //     alt="Drug and drop uploaded"
+                        //     className={styles.drugAndDrop__imagePreview}
+                        // /> :
                         <img
-                            src={checkAndRenderImageUrl(imageUrlFromApi)}
+                            src={renderImage(imageUrlFromApi)}
                             alt="Drug and drop uploaded"
                             className={styles.drugAndDrop__imagePreview}
                         /> :

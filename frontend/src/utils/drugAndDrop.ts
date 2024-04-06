@@ -19,31 +19,17 @@ export const truncateFileName = (fileName: string, maxLength: number) => {
     return requiredName;
 };
 
-// export const checkAndRenderImageUrl = (url: string) => {
-//     const baseUrl = process.env.REACT_APP_API_URL;
-//
-//     if(baseUrl) {
-//         if (url.includes('/media/media/')) {
-//             return baseUrl + url.replace('/media/media/', '/media/');
-//         } else if (url.includes('/media/')) {
-//             return baseUrl + url;
-//         } else if(!url.startsWith('/media')) {
-//             return baseUrl + '/media/' + url;
-//         }
-//     }
-// };
-
 export const checkAndRenderImageUrl = (url: string) => {
     const baseUrl = process.env.REACT_APP_API_URL;
 
     if(baseUrl) {
-        // if (url.includes('/media/media/')) {
-        //     return baseUrl + url.replace('/media/media/', '/media/');
-        // } else if (url.includes('/media/')) {
-        //     return baseUrl + url;
-        // } else if(!url.startsWith('/media')) {
-        //     return baseUrl + '/media/' + url;
-        // }
+        if (url.includes('/media/media/')) {
+            return baseUrl + url.replace('/media/media/', '/media/');
+        } else if (url.includes('/media/')) {
+            return baseUrl + url;
+        } else if(!url.startsWith('/media')) {
+            return baseUrl + '/media/' + url;
+        }
         return baseUrl + url;
     }
 };

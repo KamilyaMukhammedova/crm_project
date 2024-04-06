@@ -1,6 +1,6 @@
-const fs = require('fs').promises;
 const CollectionModel = require('../models/collection-model');
 const paginationService = require('../services/pagination-service');
+const removeFileService = require("./remove-file-service");
 
 class CollectionsService {
   async getCollections(req) {
@@ -26,7 +26,13 @@ class CollectionsService {
   async editCollection(
     title_en, title_ru, title_uz, preview, is_active, collectionId
   ) {
-    const editeCollection = await CollectionModel.findByIdAndUpdate(collectionId, {
+    const collectionBeforeUpdate = await CollectionModel.findById(collectionId);
+
+    if (collectionBeforeUpdate.preview !== preview) {
+      await removeFileService.deleteFile(collectionBeforeUpdate.preview);
+    }
+
+    const updatedCollection = await CollectionModel.findByIdAndUpdate(collectionId, {
       title_en,
       title_ru,
       title_uz,
@@ -34,15 +40,13 @@ class CollectionsService {
       is_active
     }, { new: true });
 
-    return editeCollection;
+    return updatedCollection;
   }
 
   async deleteCollection(id) {
     const collection = await CollectionModel.findById(id);
-    const filePath = '/Users/kamilya/crm_project/backend/public';
 
-    await fs.unlink(filePath + collection.preview);
-
+    await removeFileService.deleteFile(collection.preview);
     await CollectionModel.deleteOne({ _id: id });
   }
 }

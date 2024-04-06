@@ -15,3 +15,11 @@ export const getSpacesForDecimalNum = (num: number | undefined) => {
         return 0;
     }
 };
+
+export const renderImage = (key: string) => {
+    const s3Url = process.env.REACT_APP_AWS_BUCKET;
+
+    if(s3Url) {
+        return s3Url + key;
+    }
+};

@@ -1,6 +1,6 @@
-const fs = require('fs').promises;
 const PromotionModel = require('../models/promotion-model');
 const paginationService = require('../services/pagination-service');
+const removeFileService = require("./remove-file-service");
 
 class PromotionsService {
   async getPromotions(req) {
@@ -35,7 +35,17 @@ class PromotionsService {
     small_description_en, small_description_ru, small_description_uz,
     detail_image, preview, is_active, start_date, end_date, promotionId
   ) {
-    const editedPromotion = await PromotionModel.findByIdAndUpdate(promotionId, {
+    const promotionBeforeUpdate = await PromotionModel.findById(promotionId);
+
+    if (promotionBeforeUpdate.preview !== preview) {
+      await removeFileService.deleteFile(promotionBeforeUpdate.preview);
+    }
+
+    if (promotionBeforeUpdate.detail_image !== preview) {
+      await removeFileService.deleteFile(promotionBeforeUpdate.detail_image);
+    }
+
+    const updatedPromotion = await PromotionModel.findByIdAndUpdate(promotionId, {
       title_en,
       title_ru,
       title_uz,
@@ -52,15 +62,14 @@ class PromotionsService {
       end_date
     }, { new: true });
 
-    return editedPromotion;
+    return updatedPromotion;
   }
 
   async deletePromotion(id) {
     const promotion = await PromotionModel.findById(id);
-    const filePath = '/Users/kamilya/crm_project/backend/public';
 
-    await fs.unlink(filePath + promotion.preview);
-    await fs.unlink(filePath + promotion.detail_image);
+    await removeFileService.deleteFile(promotion.preview);
+    await removeFileService.deleteFile(promotion.detail_image);
     await PromotionModel.deleteOne({ _id: id });
   }
 }

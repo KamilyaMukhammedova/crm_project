@@ -1,6 +1,6 @@
-const fs = require('fs').promises;
 const NewsModel = require('../models/news-model');
 const paginationService = require('../services/pagination-service');
+const removeFileService = require('../services/remove-file-service');
 
 class NewsService {
   async getNews(req) {
@@ -35,31 +35,40 @@ class NewsService {
     small_description_en, small_description_ru, small_description_uz,
     detail_image, preview, is_active, newsId
   ) {
-    const editedNews = await NewsModel.findByIdAndUpdate(newsId, {
-      title_en,
-      title_ru,
-      title_uz,
-      description_en,
-      description_ru,
-      description_uz,
-      small_description_en,
-      small_description_ru,
-      small_description_uz,
-      detail_image,
-      preview,
-      is_active
-    }, { new: true });
+    const newsBeforeUpdate = await NewsModel.findById(newsId);
 
-    return editedNews;
+    if (newsBeforeUpdate.preview !== preview) {
+      await removeFileService.deleteFile(newsBeforeUpdate.preview);
+    }
+
+    if (newsBeforeUpdate.detail_image !== preview) {
+      await removeFileService.deleteFile(newsBeforeUpdate.detail_image);
+    }
+
+      const updatedNews = await NewsModel.findByIdAndUpdate(newsId, {
+        title_en,
+        title_ru,
+        title_uz,
+        description_en,
+        description_ru,
+        description_uz,
+        small_description_en,
+        small_description_ru,
+        small_description_uz,
+        detail_image,
+        preview,
+        is_active
+      }, {new: true});
+
+    return updatedNews;
   }
 
   async deleteNews(id) {
     const news = await NewsModel.findById(id);
-    const filePath = '/Users/kamilya/crm_project/backend/public';
 
-    await fs.unlink(filePath + news.preview);
-    await fs.unlink(filePath + news.detail_image);
-    await NewsModel.deleteOne({ _id: id });
+    await removeFileService.deleteFile(news.preview);
+    await removeFileService.deleteFile(news.detail_image);
+    await NewsModel.deleteOne({_id: id});
   }
 }
 

@@ -1,4 +1,3 @@
-const fs = require('fs').promises;
 const VacancyModel = require('../models/vacancy-model');
 const paginationService = require('../services/pagination-service');
 
@@ -50,13 +49,6 @@ class VacanciesService {
   }
 
   async deleteVacancy(id) {
-    // const vacancy = await VacancyModel.findById(id);
-    // const filePath = '/Users/kamilya/crm_project/backend/public';
-    //
-    // await fs.unlink(filePath + vacancy.preview);
-    // await fs.unlink(filePath + news.detail_image);
-    // await NewsModel.deleteOne({ _id: id });
-
     await VacancyModel.findByIdAndDelete(id);
   }
 }
