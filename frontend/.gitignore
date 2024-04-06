@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 .idea
-.env.prod
+.env
 package-lock.json
 
 

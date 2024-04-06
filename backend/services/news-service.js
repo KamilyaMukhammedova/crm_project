@@ -5,6 +5,7 @@ const removeFileService = require('../services/remove-file-service');
 class NewsService {
   async getNews(req) {
     const data = await paginationService.getRequestWithPagination(req, NewsModel);
+    console.log(data)
     return data;
   }
 
