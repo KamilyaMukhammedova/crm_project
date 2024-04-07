@@ -1,5 +1,4 @@
 import axios from "axios";
-// import history from "./utils/history";
 import { AUTH_ADMIN_URL, AUTH_REFRESH_URL } from "./constants/api";
 
 
@@ -7,15 +6,14 @@ export const axiosAPI = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 });
 
-const handleAuthError = () => {
+const clearTokens = () => {
     localStorage.removeItem('indenim:a:token');
     localStorage.removeItem('indenim:r:token');
-    window.location.href = '/login';
 };
 
 axiosAPI.interceptors.request.use(
     function (config) {
-        if(config.url !== AUTH_ADMIN_URL) {
+        if (config.url !== AUTH_ADMIN_URL) {
             config.headers.Authorization = `Bearer ${localStorage.getItem('indenim:a:token')}`;
         }
         return config;
@@ -26,35 +24,45 @@ axiosAPI.interceptors.request.use(
 );
 
 axiosAPI.interceptors.response.use(
-    function (response) {
+    (response) => {
         return response;
     },
-    async function (error) {
+    async (error) => {
         const originalRequest = error.config;
-        const refreshEndpoint = AUTH_REFRESH_URL;
-
-        if (originalRequest.url !== refreshEndpoint && !originalRequest._retry) {
-            originalRequest._retry = true;
-            const refresh_token = localStorage.getItem('indenim:r:token');
-
-            try {
-                const res = await axiosAPI.post(refreshEndpoint, { refresh: refresh_token });
-                if (res.status === 200) {
-                    localStorage.setItem('indenim:a:token', res.data.access);
-                    originalRequest.headers.Authorization = `Bearer ${res.data.access}`;
-                    return axiosAPI(originalRequest);
-                } else {
-                    throw new Error("Token refresh failed");
-                }
-            } catch (err) {
-                handleAuthError();
-                return Promise.reject(err);
-            }
-        }
-
-        if (originalRequest.url === refreshEndpoint) {
-            handleAuthError();
+        if (originalRequest.url === AUTH_REFRESH_URL) {
+            console.error("Refresh token request failed. Not retrying.");
+            localStorage.removeItem('indenim:a:token');
+            localStorage.removeItem('indenim:r:token');
             return Promise.reject(error);
+        }
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            try {
+                const refreshToken = localStorage.getItem('indenim:r:token');
+                if (!refreshToken) {
+                    clearTokens();
+                    window.location.href = '/login';
+                    return Promise.reject("No refresh token available");
+                }
+
+                try {
+                    const res = await axiosAPI.post(AUTH_REFRESH_URL, {refresh: refreshToken});
+                    if (res.status === 200) {
+                        localStorage.setItem('indenim:a:token', res.data.access);
+                        localStorage.setItem('indenim:r:token', res.data.refresh);
+                    }
+                } catch (e) {
+                    return Promise.reject(e);
+                }
+
+                const newToken = localStorage.getItem("indenim:a:token");
+                originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
+                return axiosAPI(originalRequest);
+            } catch (refreshError) {
+                console.error("Refresh token failed:", refreshError);
+                clearTokens();
+                return Promise.reject(refreshError);
+            }
         }
 
         return Promise.reject(error);

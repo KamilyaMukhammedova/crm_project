@@ -1,6 +1,6 @@
 import { Image } from "antd";
-import { checkImageUrl } from "../../utils/table";
 import { IBanner } from "../../types/banners";
+import { renderImage } from "../../utils/basic";
 import CustomButton from "../../components/ui/CustomButton/CustomButton";
 import DeleteButton from "../../components/ui/DeleteButton/DeleteButton";
 
@@ -25,7 +25,7 @@ export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: str
             fixed: 'left',
             render: (img: string) => (
                 <Image
-                    src={checkImageUrl(img)}
+                    src={renderImage(img)}
                     width={'300px'}
                     height={'auto'}
                     style={{borderRadius: '10px'}}

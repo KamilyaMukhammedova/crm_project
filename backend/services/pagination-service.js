@@ -1,7 +1,7 @@
 class PaginationService {
-  async getRequestWithPagination(req, model) {
+  async getRequestWithPagination(req, model, routerName) {
     const { page = 1, limit = 10 } = req.query;
-    const url = `${req.protocol}://${req.get('host')}${req.baseUrl}`;
+    const url = `${req.protocol}://${req.get('host')}${req.baseUrl}/${routerName}`;
 
     const count = await model.countDocuments();
     const currentPage = parseInt(page);

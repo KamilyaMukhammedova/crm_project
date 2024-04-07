@@ -4,7 +4,7 @@ const removeFileService = require("./remove-file-service");
 
 class PromotionsService {
   async getPromotions(req) {
-    const data = await paginationService.getRequestWithPagination(req, PromotionModel);
+    const data = await paginationService.getRequestWithPagination(req, PromotionModel, 'discounts');
     return data;
   }
 

@@ -41,13 +41,13 @@ export const CONTENT_MANAGEMENT = [
         path: '/content_management/promotions',
         isPrimary: false,
     },
-    {
-        key: 'content.3',
-        title: 'Bestsellers',
-        icon: bestsellers,
-        path: '/content_management/bestsellers',
-        isPrimary: false,
-    },
+    // {
+    //     key: 'content.3',
+    //     title: 'Bestsellers',
+    //     icon: bestsellers,
+    //     path: '/content_management/bestsellers',
+    //     isPrimary: false,
+    // },
     {
         key: 'content.4',
         title: 'Collections',

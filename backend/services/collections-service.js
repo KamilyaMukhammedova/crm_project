@@ -4,7 +4,7 @@ const removeFileService = require("./remove-file-service");
 
 class CollectionsService {
   async getCollections(req) {
-    const data = await paginationService.getRequestWithPagination(req, CollectionModel);
+    const data = await paginationService.getRequestWithPagination(req, CollectionModel, 'collections');
     return data;
   }
 

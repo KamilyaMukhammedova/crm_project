@@ -2,7 +2,7 @@ import moment from "moment";
 import { Image } from 'antd';
 import { ICollection } from "../../types/collections";
 import { generateDataIndexWithCurrentLanguage } from "../../utils/translation";
-import { checkAndRenderImageUrl } from "../../utils/drugAndDrop";
+import { renderImage } from "../../utils/basic";
 import CustomButton from "../../components/ui/CustomButton/CustomButton";
 import DeleteButton from "../../components/ui/DeleteButton/DeleteButton";
 import StatusColumn from "../../components/ui/StatusColumn/StatusColumn";
@@ -37,7 +37,7 @@ export const generateColumns = (onEdit: (id: string) => void, onDelete: (id: str
             render: (text: string) => {
                 return (
                     <Image
-                        src={checkAndRenderImageUrl(text)}
+                        src={renderImage(text)}
                         width={191}
                         height={120}
                         style={{borderRadius: '10px'}}

@@ -3,7 +3,7 @@ const paginationService = require('../services/pagination-service');
 
 class VacanciesService {
   async getVacancies(req) {
-    const data = await paginationService.getRequestWithPagination(req, VacancyModel);
+    const data = await paginationService.getRequestWithPagination(req, VacancyModel, 'vacancies');
     return data;
   }
 
