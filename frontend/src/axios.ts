@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 import { AUTH_ADMIN_URL, AUTH_REFRESH_URL } from "./constants/api";
 
 
@@ -41,7 +42,6 @@ axiosAPI.interceptors.response.use(
                 const refreshToken = localStorage.getItem('indenim:r:token');
                 if (!refreshToken) {
                     clearTokens();
-                    window.location.href = '/login';
                     return Promise.reject("No refresh token available");
                 }
 
@@ -60,7 +60,9 @@ axiosAPI.interceptors.response.use(
                 return axiosAPI(originalRequest);
             } catch (refreshError) {
                 console.error("Refresh token failed:", refreshError);
+                message.error('Refresh token failed!');
                 clearTokens();
+                window.location.href = '/login';
                 return Promise.reject(refreshError);
             }
         }

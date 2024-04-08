@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 // import { useHistory } from "react-routers-dom";
+import {useNavigate} from 'react-router-dom';
 import i18n from "i18next";
 import type { MenuProps } from 'antd';
 import { Badge, Dropdown, Layout, message, Tooltip } from 'antd';
@@ -9,7 +10,6 @@ import userIcon from "../../../assets/header/user_icon.svg";
 import chevronDownIcon from "../../../assets/chevron_down_icon.svg";
 import bellIcon from "../../../assets/header/bell_icon.svg";
 import styles from './Header.module.scss';
-import {useNavigate} from 'react-router-dom';
 
 const {Header: AntdHeader} = Layout;
 
@@ -69,12 +69,12 @@ const Header: FC<HeaderProps> = ({profileName}) => {
     ];
 
     const userInfoItems: MenuProps['items'] = [
-        {
-            key: 'profile',
-            label: (
-                <p>{t("Profile")}</p>
-            ),
-        },
+        // {
+        //     key: 'profile',
+        //     label: (
+        //         <p>{t("Profile")}</p>
+        //     ),
+        // },
         {
             key: 'logout',
             label: (

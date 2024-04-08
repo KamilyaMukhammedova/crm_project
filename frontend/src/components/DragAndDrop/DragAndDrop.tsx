@@ -5,7 +5,7 @@ import { Upload } from 'antd';
 import { DeleteOutlined, PaperClipOutlined } from "@ant-design/icons";
 import { FORM_REQUIRED_MESSAGES } from "../../constants/form";
 import { BasicFormState, IBannerFormState, ICollectionFormState } from "../../types/initialFormStates";
-import { checkAndRenderImageUrl, truncateFileName } from "../../utils/drugAndDrop";
+import { truncateFileName } from "../../utils/drugAndDrop";
 import { renderImage } from "../../utils/basic";
 import drugAndDropIcon from "../../assets/drug_and_drop_icon.svg";
 import styles from "./DragAndDrop.module.scss";
@@ -101,13 +101,13 @@ const DragAndDrop: FC<IProps> = ({
             </Upload.Dragger>
             {
                 (isEditedForm && props.fileList?.length === 0 && imageUrlFromApi) &&
-                <div className={styles.customRemoveWrapper} onClick={onCustomReset}>
-                    <p>
-                        <PaperClipOutlined/>
-                        <span>{truncateFileName(imageUrlFromApi, truncateNum ? truncateNum : 10)}</span>
-                    </p>
-                    <DeleteOutlined/>
-                </div>
+              <div className={styles.customRemoveWrapper} onClick={onCustomReset}>
+                <p>
+                  <PaperClipOutlined/>
+                  <span>{truncateFileName(imageUrlFromApi, truncateNum ? truncateNum : 10)}</span>
+                </p>
+                <DeleteOutlined/>
+              </div>
             }
             {error && <p className={'error'}>{t(FORM_REQUIRED_MESSAGES.image)}</p>}
         </div>
@@ -115,4 +115,3 @@ const DragAndDrop: FC<IProps> = ({
 };
 
 export default DragAndDrop;
-
